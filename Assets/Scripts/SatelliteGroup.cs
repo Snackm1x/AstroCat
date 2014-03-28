@@ -3,14 +3,18 @@ using System.Collections;
 
 public class SatelliteGroup : MonoBehaviour {
 
+	//Movement Variables
 	Vector3 targetDir;
 	float moveSpeed = 25f;
 	int currentNode = 1;
+
+	//Node Checkpoint flags
 	bool reached1 = false;
 	bool reached2 = false;
 	bool reached3 = false;
 	bool reachedEnd = false;
 
+	//Waypoint Nodes for movement
 	GameObject node1;
 	GameObject node2;
 	GameObject node3;
@@ -21,13 +25,18 @@ public class SatelliteGroup : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//Set references and begin movement
 		node1 = GameObject.Find ("Node1") as GameObject;
 		node2 = GameObject.Find ("Node2") as GameObject;
 		node3 = GameObject.Find ("Node3") as GameObject;
 		endNode = GameObject.Find ("EndNode") as GameObject;
 		moveToNode(currentNode);
 	}
-	
+
+	void Update(){
+		deleteSat();
+	}
+
 	// Update is called once per frame
 	void FixedUpdate () {
 		checkCurrentNode();
