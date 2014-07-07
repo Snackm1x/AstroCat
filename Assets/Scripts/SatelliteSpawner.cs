@@ -5,10 +5,15 @@ using System.Collections.Generic;
 public class SatelliteSpawner : MonoBehaviour {
 
 	public List<GameObject> satelliteList = new List<GameObject>();
-	Vector3 spawnPos = new Vector3(-3, -.05f, 0);
-
+	GameObject spawnNode;
+	Vector3 spawnPos;
 	float spawnTime = 2.5f;
 	float timeSinceSpawn = 0f;
+
+	void Start(){
+		spawnNode = GameObject.Find ("SpawnNode") as GameObject;
+		spawnPos = spawnNode.transform.position;
+	}
 
 	// Update is called once per frame
 	void Update () {
